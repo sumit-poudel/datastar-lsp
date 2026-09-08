@@ -7,17 +7,18 @@ import (
 	"github.com/owenrumney/go-lsp/lsp"
 )
 
-var keywords = []string{"func", "var", "const", "type"}
-
 func (h *Handler) Completion(_ context.Context, _ *lsp.CompletionParams) (*lsp.CompletionList, error) {
 	kind := lsp.CompletionItemKindKeyword
-	items := make([]lsp.CompletionItem, len(keywords))
-	for i, kw := range keywords {
-		items[i] = lsp.CompletionItem{
-			Label: kw,
-			Kind:  &kind,
-		}
+
+	items := make([]lsp.CompletionItem, 0, len(Attributes))
+	for _, attribute := range Attributes {
+		items = append(items, lsp.CompletionItem{
+			Label:  attribute.Name,
+			Kind:   &kind,
+			Detail: attribute.Desc,
+		})
 	}
+
 	return &lsp.CompletionList{Items: items}, nil
 }
 
