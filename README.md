@@ -1,5 +1,11 @@
 # DataStar lsp in go
 
+build the binary
+
+```
+go build .
+```
+
 ```
 -- in nvim
 vim.api.nvim_create_autocmd("FileType", {
@@ -15,3 +21,26 @@ vim.api.nvim_create_autocmd("FileType", {
 ```
 
 [Data Star](https://data-star.dev/)
+
+## Project Structure
+
+```
+.
+├── go.mod
+├── go.sum
+├── handler
+│   ├── completion.go
+│   ├── datastar
+│   │   ├── attributes
+│   │   │   ├── data-bind.md
+│   │   │   ├── data-on.md
+│   │   │   └── data-*.md
+│   │   └── data-on
+│   │       ├── click.md
+│   │       └── *.md
+│   ├── handler.go
+│   └── hover.go
+├── LICENSE
+├── main.go
+└── README.md
+```
